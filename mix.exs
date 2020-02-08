@@ -32,7 +32,9 @@ defmodule BitsharesReporting.MixProject do
       {:postgrex,            "~> 0.15.3"},
       {:poison,              "~> 4.0.1"},
       {:plug_cowboy,         "~> 2.1.2"},
+      {:socket,              "~> 0.3.13"},
       {:phoenix_live_reload, "~> 1.2.1", only: :dev},
+      {:credo,               "~> 1.0.0", only: :dev, runtime: false}
     ]
   end
 
