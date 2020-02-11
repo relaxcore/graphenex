@@ -31,7 +31,7 @@ defmodule BitsharesReporting.Asset do
       Enum.reduce_while(asset_ids, 0, fn x, _acc ->
         asset_id = "1.3.#{x}"
 
-        raw_object = BitsharesReporting.BitsharesClient.invoke("get_objects", [[asset_id]])
+        raw_object = BitsharesReporting.BitsharesRpcClient.invoke("get_objects", [[asset_id]])
         [object]   = raw_object |> Poison.decode! |> Kernel.get_in(["result"])
 
         if is_map(object) do

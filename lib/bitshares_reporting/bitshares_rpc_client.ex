@@ -1,4 +1,4 @@
-defmodule BitsharesReporting.BitsharesClient do
+defmodule BitsharesReporting.BitsharesRpcClient do
   def invoke(method, params) do
     conn = Socket.Web.connect!("ws-dex.bitspark.io")
     Socket.Web.send!(conn, payload(method, params))
