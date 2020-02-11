@@ -26,7 +26,7 @@ defmodule BitsharesReporting.Asset do
     Task.start_link(fn ->
       query     = from a in Asset, select: a.asset_id, limit: 1, order_by: [desc: :inserted_at]
       last_id   = query |> Repo.one() |> String.split(".") |> Enum.at(-1) |> String.to_integer
-      asset_ids = Enum.to_list(last_id+1..10000)
+      asset_ids = Enum.to_list(last_id+1..10_000)
 
       Enum.reduce_while(asset_ids, 0, fn x, _acc ->
         asset_id = "1.3.#{x}"

@@ -34,6 +34,7 @@ defmodule BitsharesReporting.MixProject do
       {:plug_cowboy,         "~> 2.1.2"},
       {:socket,              "~> 0.3.13"},
       {:httpoison,           "~> 1.6.2"},
+      {:elixlsx,             "~> 0.4.2"},
       {:phoenix_live_reload, "~> 1.2.1", only: :dev},
       {:credo,               "~> 1.0.0", only: :dev, runtime: false}
     ]
