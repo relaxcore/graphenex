@@ -12,6 +12,8 @@ defmodule Reporting.BitsharesClients.ES do
       {status, response} = HTTPoison.request(:get, @url, account_history_payload(account_id), @headers, @options)
       with :ok <- status, 200 <- response.status_code, do: response.body |> Poison.decode! |> get_in(["hits", "hits"])
     end
+  rescue
+    _ -> nil
   end
 
   def invoke(_), do: nil

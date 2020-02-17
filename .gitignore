@@ -39,3 +39,5 @@ npm-debug.log
 # environement related configs
 /apps/*/config/dev.exs
 /apps/*/config/prod.exs
+
+/apps/reporting/generated_reports
