@@ -37,5 +37,5 @@ npm-debug.log
 .tool-versions
 
 # environement related configs
-/config/dev.exs
-/config/prod.exs
+/apps/*/config/dev.exs
+/apps/*/config/prod.exs

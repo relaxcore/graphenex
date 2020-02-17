@@ -1,4 +1,4 @@
-# BitsharesReporting
+# Graphenex
 
 To start your Phoenix server:
 

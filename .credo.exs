@@ -3,7 +3,7 @@
     %{
       name: "default",
       files: %{
-        included: ["lib/"],
+        included: ["apps/*/lib"],
         excluded: [~r"/_build/", ~r"/deps/", ~r"/config/"]
       },
       requires: [],
