@@ -1,4 +1,4 @@
-defmodule Reporting.Report.Columns.OperationName do
+defmodule Reporting.Report.Sheets.LedgerOverview.Columns.OperationName do
   def get(0),  do: "Transfer"
   def get(1),  do: "Limit Order Create"
   def get(2),  do: "Limit Order Cancel"

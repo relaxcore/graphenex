@@ -3,7 +3,7 @@ defmodule Reporting.Asset do
   alias Reporting.BitsharesClients.RPC
 
   use Ecto.Schema
-  import Ecto.Changeset
+  import Ecto.{Changeset, Query}
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
@@ -22,6 +22,14 @@ defmodule Reporting.Asset do
     |> cast(attrs, [:name, :asset_id, :precision, :raw_data])
     |> validate_required([:name, :asset_id, :precision, :raw_data])
     |> unique_constraint(:asset_id)
+  end
+
+  def name(asset_id) do
+    Repo.one(from a in __MODULE__, select: a.name, where: a.asset_id == ^asset_id)
+  end
+
+  def precision(asset_id) do
+    Repo.one(from a in __MODULE__, select: a.precision, where: a.asset_id == ^asset_id)
   end
 
   def sync do

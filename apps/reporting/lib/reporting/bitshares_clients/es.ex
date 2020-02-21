@@ -19,7 +19,6 @@ defmodule Reporting.BitsharesClients.ES do
   def invoke(_), do: nil
 
   defp account_history_payload(account_id) do
-    # TODO: ES node throw 500 if object size > 10000. Fix with recursion or try other node
     %{
       "size" => 10_000,
       "sort" => [%{"operation_id_num" => %{"order" => "asc", "unmapped_type" => "boolean"}}],

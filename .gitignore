@@ -41,3 +41,5 @@ npm-debug.log
 /apps/*/config/prod.exs
 
 /apps/reporting/generated_reports
+
+**/.DS_Store
