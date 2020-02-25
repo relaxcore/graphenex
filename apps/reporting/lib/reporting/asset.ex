@@ -33,16 +33,14 @@ defmodule Reporting.Asset do
   end
 
   def sync do
-    Task.start_link(fn ->
-      asset_ids = 0..50_000 |> Enum.to_list |> Enum.map(&("1.3.#{&1}"))
+    asset_ids = 0..50_000 |> Enum.to_list |> Enum.map(&("1.3.#{&1}"))
 
-      raw_object = RPC.invoke("get_objects", [asset_ids])
-      objects    = raw_object |> Poison.decode! |> Map.get("result") |> Enum.reject(&is_nil/1)
+    raw_object = RPC.invoke("get_objects", [asset_ids])
+    objects    = raw_object |> Poison.decode! |> Map.get("result") |> Enum.reject(&is_nil/1)
 
-      Enum.each(objects, fn object ->
-        %Asset{name: object["symbol"], precision: object["precision"], raw_data: object, asset_id: object["id"]}
-        |> Repo.insert(on_conflict: :nothing)
-      end)
+    Enum.each(objects, fn object ->
+      %Asset{name: object["symbol"], precision: object["precision"], raw_data: object, asset_id: object["id"]}
+      |> Repo.insert(on_conflict: :nothing)
     end)
   end
 end

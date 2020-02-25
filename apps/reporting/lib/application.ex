@@ -2,9 +2,7 @@ defmodule Reporting.Application do
   use Application
 
   def start(_type, _args) do
-    children = [
-      Reporting.Repo,
-    ]
+    children = [Reporting.Repo]
 
     opts = [strategy: :one_for_one, name: Reporting.Supervisor]
     Supervisor.start_link(children, opts)
