@@ -17,21 +17,11 @@ defmodule Reporting.Report.Sheets.LedgerOverview do
     |> Sheet.set_col_width("E", 70)
   end
 
-  defp headers do
-    (info_headers() ++ asset_headers()) |> Enum.map(&([&1, bold: true]))
-  end
+  defp headers,       do: (info_headers() ++ asset_headers()) |> Enum.map(&([&1, bold: true]))
+  defp info_headers,  do: ["Transaction ID", "Operation name", "Block number", "Block date & time", "Description"]
+  defp asset_headers, do: ["Some asset balance"]
 
-  defp info_headers do
-    ["Transaction ID", "Operation name", "Block number", "Block date & time", "Description"]
-  end
-
-  defp asset_headers do
-    ["Some asset balance"]
-  end
-
-  defp data_rows(account_name) do
-    ES.invoke("account_history", account_name) |> normalized_data_rows
-  end
+  defp data_rows(account_name), do: ES.invoke("account_history", account_name) |> normalized_data_rows
 
   defp normalized_data_rows(transactions) when is_list(transactions) do
     Enum.map(transactions, fn %{"_source" => transaction} ->
@@ -48,7 +38,5 @@ defmodule Reporting.Report.Sheets.LedgerOverview do
     end)
   end
 
-  defp normalized_data_rows(_) do
-    []
-  end
+  defp normalized_data_rows(_), do: []
 end

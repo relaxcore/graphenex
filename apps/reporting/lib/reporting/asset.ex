@@ -24,13 +24,8 @@ defmodule Reporting.Asset do
     |> unique_constraint(:asset_id)
   end
 
-  def name(asset_id) do
-    Repo.one(from a in __MODULE__, select: a.name, where: a.asset_id == ^asset_id)
-  end
-
-  def precision(asset_id) do
-    Repo.one(from a in __MODULE__, select: a.precision, where: a.asset_id == ^asset_id)
-  end
+  def name(asset_id),      do: Repo.one(from a in __MODULE__, select: a.name,      where: a.asset_id == ^asset_id)
+  def precision(asset_id), do: Repo.one(from a in __MODULE__, select: a.precision, where: a.asset_id == ^asset_id)
 
   def sync do
     asset_ids = 0..50_000 |> Enum.to_list |> Enum.map(&("1.3.#{&1}"))

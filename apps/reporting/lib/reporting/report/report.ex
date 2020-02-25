@@ -16,8 +16,6 @@ defmodule Reporting.Report do
 
   def generate(_, _), do: {:error, "Undefined file format!"}
 
-  defp sheets(account_name) do
-    # use dynamic sheet list based on account transaction operation_ids; only ledger overview for now
-    [LedgerOverview.sheet(account_name)]
-  end
+  # use dynamic sheet list based on account transaction operation_ids; only ledger overview for now
+  defp sheets(account_name), do: [LedgerOverview.sheet(account_name)]
 end
